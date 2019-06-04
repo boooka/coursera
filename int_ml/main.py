@@ -10,12 +10,13 @@ df = pd.merge(df, sex_df, how='left', on='Sex')
 
 # df = df[['Pclass', 'Fare', 'Age', 'Sexi', 'Survived']]
 
-df = df.dropna()
 futures = ['Sexi', 'Age', 'Fare', 'Pclass', ]
+df = df[futures + ['Survived']].dropna()
+
 X = df[futures]
 y = df['Survived']
 clf = DecisionTreeClassifier(random_state=241)
-clf.fit(X, y)
+clf = clf.fit(X, y, check_input=True)
 
 importances = sorted([
     (v, futures[k]) for k, v in enumerate(clf.feature_importances_)

@@ -1,1 +1,1 @@
-Age Fare
+Sex Fare
