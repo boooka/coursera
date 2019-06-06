@@ -1,4 +1,3 @@
-import numpy as np
 import pandas as pd
 from sklearn.tree import DecisionTreeClassifier
 df = pd.read_csv('./data/titanic.csv', index_col='PassengerId')
@@ -7,8 +6,6 @@ sex_df = pd.DataFrame({
     'Sexi': [1, 2]})
 # df.Sex = df.Sex.replace('^fe(.*)', '0', regex=True).replace('^male', '1', regex=True).astype(int)
 df = pd.merge(df, sex_df, how='left', on='Sex')
-
-# df = df[['Pclass', 'Fare', 'Age', 'Sexi', 'Survived']]
 
 futures = ['Sexi', 'Age', 'Fare', 'Pclass', ]
 df = df[futures + ['Survived']].dropna()
